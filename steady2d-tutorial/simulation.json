@@ -1,0 +1,16 @@
+{
+  "SIMULATION": {
+    "OUTPUT": [
+      "water_depth",
+      "water_surface",
+      "bottom_elevation",
+      "flow_velocity",
+      "ns_hyd_discharge"
+    ],
+    "TIME": {
+      "end": 15000.0,
+      "out": 1000.0,
+      "start": 0.0
+    }
+  }
+}
