@@ -1,8 +1,9 @@
 {
   "SETUP": {
-    "DOMAIN": {
+    "BASEHPC": {
       "BASEPLANE_2D": {
         "GEOMETRY": {
+          "mesh_file": "/home/schwindt/Software/BASEMENT/hyfo-bm-training-update/steady2d-tutorial/prepro-tutorial_quality-mesh-interp.2dm",
           "REGIONDEF": [
             {
               "index": [
@@ -44,29 +45,38 @@
               "name": "outflow",
               "upstream_direction": "right"
             }
-          ],
-          "mesh_file": "C:/temp/Basement/steady2d-tutorial/prepro-tutorial_quality-mesh-interp.2dm"
+          ]
         },
         "HYDRAULICS": {
+          "INITIAL": {
+            "type": "dry"
+          },
+          "PARAMETER": {
+            "CFL": 0.9,
+            "fluid_density": 1000,
+            "max_time_step": 100,
+            "minimum_water_depth": 0.01
+          },
           "BOUNDARY": {
             "STANDARD": [
               {
-                "discharge_file": "C:/temp/Basement/steady2d-tutorial/steady-inflow.txt",
-                "name": "Inflow",
-                "slope": 0.0044,
+                "name": "inflow",
                 "string_name": "inflow",
-                "type": "uniform_in"
+                "type": "uniform_in",
+                "discharge_file": "/home/schwindt/Software/BASEMENT/hyfo-bm-training-update/steady2d-tutorial/steady-inflow.txt",
+                "slope": 0.0044
               },
               {
-                "name": "Outflow",
-                "slope": 0.0044,
+                "name": "outflow",
                 "string_name": "outflow",
-                "type": "uniform_out"
+                "type": "uniform_out",
+                "slope": 0.0044
               }
             ]
           },
           "FRICTION": {
             "default_friction": 30.0,
+            "type": "strickler",
             "regions": [
               {
                 "friction": 34.0,
@@ -88,17 +98,7 @@
                 "friction": 39.0,
                 "region_name": "sand_deposit"
               }
-            ],
-            "type": "strickler"
-          },
-          "INITIAL": {
-            "type": "dry"
-          },
-          "PARAMETER": {
-            "CFL": 0.9,
-            "fluid_density": 1000.0,
-            "max_time_step": 100.0,
-            "minimum_water_depth": 0.01
+            ]
           }
         }
       },
